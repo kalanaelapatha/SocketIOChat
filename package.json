@@ -1,0 +1,19 @@
+{
+  "name": "iochat",
+  "version": "1.0.0",
+  "description": "Simple Chat App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "socket.io": "*",
+    "express": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016\u0016\u0016https://github.com/kalanaelapatha/SocketIOChat.git"
+  },
+  "author": "Kalana Elapatha",
+  "license": "ISC"
+}
