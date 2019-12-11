@@ -21,8 +21,10 @@ io.sockets.on('connection', function(socket){
         console.log('Server Connected with : %s Socckets', connections.length); 
 
         // //Disconnection about socket
-        socket.on('disconnect', function(data){
-
+        socket.on('disconnect', function(data){ 
+                 
+                users.splice(users.indexOf(socket), 1);
+                updateUsernames();
                 connections.splice(connections.indexOf(socket), 1);
                 console.log(' Disconnected: %s sockets connected', connections.length); //if someone disconnect we can see available users
                 
@@ -32,9 +34,24 @@ io.sockets.on('connection', function(socket){
         //Send Message
 
         socket.on('send message', function(data){
-                console.log(data);
-                io.sockets.emit('new message',{meg: data});
+               io.sockets.emit('new message', {msg: data, user: socket.username});
         });
+
+
+        //New User
+
+        socket.on('new user', function(data, callback){
+
+                callback(true);
+                socket.username= data;
+                users.push(socket.username);
+                updateUsernames();
+        });
+
+
+        function updateUsernames(){
+                 io.sockets.emit('get users', users);
+        }
 });
 
 
