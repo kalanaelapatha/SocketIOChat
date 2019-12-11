@@ -60,7 +60,8 @@
         $messageForm.submit(function(e){
 
             e.preventDefault();
-            console.log('Message Submitted !!!');
+            socket.emit('send message', $message.val());
+            $message.val(''); //clear the typed message
 
         });
 
