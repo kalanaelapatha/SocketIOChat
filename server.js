@@ -28,6 +28,13 @@ io.sockets.on('connection', function(socket){
                 
 
         });
+
+        //Send Message
+
+        socket.on('send message', function(data){
+
+                io.sockets.emit('new message',{meg: data});
+        });
 });
 
 
